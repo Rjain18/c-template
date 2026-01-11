@@ -1,21 +1,31 @@
-# TEMPLATE GUIDE
+# Template Setup
 This is an empty C Project that has the basics set up. The goal of this is to allow me to run a script with a name, a description and a few other variables and the project to be customized and ready to code.
 
 ## Variables for the TEMPLATE to search
-grep these for now and replace with correct name.
-**01PROJTEMP** Human readable project name
+`grep` these for now and replace with correct name.
 
-**01PROJUPPER** is the name of the project used in the CMakeLists. It should be uppercase and not have any spaces
+---------------
 
-**01PROJCMD** is the name of the executable file
+- **01PROJTEMP** Human readable project name
 
-**01PROJDESC** Description of Stuff it does!
+- **01PROJUPPER** is the name of the project used in the CMakeLists. It should be uppercase and not have any spaces
+
+- **01PROJCMD** is the name of the executable file
+
+- **01PROJDESC** Description of Stuff it does!
+
+---------------
 
 ## Other things to change before starting
 
 **Usage** change this entire readme based on actual usage and installation
 
 **Contact** Change your contact details as necessary
+
+# 01PROJTEMP
+01PROJDESC
+
+--------------
 
 ## Quick Start
 Fork and rename
@@ -38,26 +48,28 @@ make 01PROJCMD
 
 ## Installation
 
-### clang-format
+- ### clang-format
 The GNU Format is used by clang-format. And is automatically run by `make` when using either `build_all` or `clang-format` targets
 
-### docs
+- ### docs
 Doxygen is used for Documentation. And is automatically run by `make` when using either `build_all` or `docs` targets.
 
-### ~~check~~
+- ### ~~check~~
 ~~ctest is the CMake tester. It is not implemented yet. And is automatically run by `make` when using either `build_all` or `check` targets.~~
 
-### 01PROJCMD
+- ### 01PROJCMD
 01PROJCMD is the regular executable. And is automatically run by `make` when using either `build_all` or `prep` targets.
 
-### ~~debug~~
+- ### ~~debug~~
 ~~TODO~~
 
-### ~~Windows~~
+- ### ~~Windows~~
 ~~TO NOT DO~~
 
-### ~~Other Platforms~~
+- ### ~~Other Platforms~~
 ~~TODO~~
+
+---------
 
 ## Usage
 | Flag | Values | Description |
@@ -66,6 +78,8 @@ Doxygen is used for Documentation. And is automatically run by `make` when using
 | `-f=` | `0-99` | Description |
 
 Go into detail of all the configuration options as well as syntax of any commands.
+
+---------
 
 ## Contact
 <obsoleteTiger@protonmail.com> is the best way to contact me.
