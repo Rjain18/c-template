@@ -1,6 +1,28 @@
 #!/bin/bash
 
-read -p "Project command name (name of target and directory): " proj_command
+read -p "Project Name: " proj_readable
+
+proj_command=${proj_readable//[^[:alnum:] ]/}
+proj_command=${proj_command//[[:space:]]/_}
+proj_upper=${proj_command^^} 
+
+read -r -p "Project description. 1-2 Sentences don't use \\ or \/ or \|: " proj_description
+
+proj_description=${proj_description//\\/\\\\}
+proj_description=${proj_description//\"/\\\"}
+proj_description=${proj_description//\$/\\\$}
+proj_description=${proj_description//;/\\;}
+
+echo "${proj_readable}"
+echo "${proj_upper}"
+echo "${proj_command}"
+echo "${proj_description}"
+read -p "Confirm Variables make sense (y/N): " confirm
+if [[ "${confirm}" != "y" && "${confirm}" != "Y" ]]; then
+	echo "Nothing Done... Exiting!"
+	exit 1
+fi
+
 if [ -d "../$proj_command" ]; then
 	echo "Error: '../$proj_command' already exists"
 	exit 1
@@ -34,11 +56,6 @@ cp ./CHANGELOG-NEW.md ../$proj_command/CHANGELOG.md
 cp ./README-NEW.md ../$proj_command/README.md
 
 cd ../$proj_command
-
-# fnd and replace recursively through new current directory
-read -p "Project Name in a readable format: " proj_readable
-read -p "Project description. 1-2 Sentences don't use \\ or \/ or \|: " proj_description
-read -p "Project Command in Upper Case (used for CMake file globbing): " proj_upper
 
 echo "$proj_description" > .git/description
 
