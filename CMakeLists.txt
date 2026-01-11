@@ -1,36 +1,36 @@
 cmake_minimum_required(VERSION 3.16)
 
 project(
-	ChangeName
-	VERSION 0.0.1
-	DESCRIPTION "Change Project Description"
+	01PROJTEMP
+	VERSION 0.1.0
+	DESCRIPTION "01PROJDESC"
 	LANGUAGES C
 )
 
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 
-file(GLOB_RECURSE PROJNAME_SOURCES "${CMAKE_SOURCE_DIR}/src/*.c")
-file(GLOB_RECURSE PROJNAME_HEADERS "${CMAKE_SOURCE_DIR}/include/*.h")
+file(GLOB_RECURSE 01PROJUPPER_SOURCES "${CMAKE_SOURCE_DIR}/src/*.c")
+file(GLOB_RECURSE 01PROJUPPER_HEADERS "${CMAKE_SOURCE_DIR}/include/*.h")
 
 file(GLOB_RECURSE TEST_SOURCES "${CMAKE_SOURCE_DIR}/tests/*.c")
 file(GLOB_RECURSE TEST_HEADERS "${CMAKE_SOURCE_DIR}/tests/*.h")
 
 set(ALL_C_FILES
-	${PROJNAME_SOURCES}
-	${PROJNAME_HEADERS}
+	${01PROJUPPER_SOURCES}
+	${01PROJUPPER_HEADERS}
 	${TEST_SOURCES}
 	${TEST_HEADERS}
 )
 
-add_executable(proj
-	${PROJNAME_SOURCES}
-	${PROJNAME_HEADERS}
+add_executable(01PROJCMD
+	${01PROJUPPER_SOURCES}
+	${01PROJUPPER_HEADERS}
 )
 
-target_include_directories(proj PRIVATE ${CMAKE_SOURCE_DIR}/include)
-target_compile_options(proj PRIVATE -Wall -Wextra)
-add_dependencies(proj clang-format)
+target_include_directories(01PROJCMD PRIVATE ${CMAKE_SOURCE_DIR}/include)
+target_compile_options(01PROJCMD PRIVATE -Wall -Wextra)
+add_dependencies(01PROJCMD clang-format)
 
 
 # clang-format target
@@ -65,7 +65,7 @@ if(DOXYGEN_FOUND)
 else()
 	message(STATUS "Doxygen not found, 'docs' target willbe skipped")
 endif()
-add_dependencies(docs proj)
+add_dependencies(docs 01PROJCMD)
 
 # TESTS
 enable_testing()
@@ -91,17 +91,16 @@ else()
 endif()
 
 # Runs all targets
-add_custom_target(proj_prep ALL
-	COMMENT "Build all targets: proj, formatting, documentation, testing"
+add_custom_target(build_all ALL
+	COMMENT "Build all targets: 01PROJCMD, formatting, documentation, testing"
 )
 
-add_dependencies(proj_prep clang-format)
+add_dependencies(build_all clang-format)
 if (TARGET check)
-	add_dependencies(proj_prep check)
+	add_dependencies(build_all check)
 else ()
 	message(STATUS "No tests found in tests/*.c. 'check' target will be skipped")
 endif ()
-add_dependencies(proj_prep proj)
-add_dependencies(proj_prep docs)
-
+add_dependencies(build_all 01PROJCMD)
+add_dependencies(build_all docs)
 

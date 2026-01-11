@@ -1,21 +1,70 @@
-# Change Name
-Description of Stuff it does!
+# TEMPLATE GUIDE
+This is an empty C Project that has the basics set up. The goal of this is to allow me to run a script with a name, a description and a few other variables and the project to be customized and ready to code.
+
+## Variables for the TEMPLATE to search
+grep these for now and replace with correct name.
+**01PROJTEMP** Human readable project name
+
+**01PROJUPPER** is the name of the project used in the CMakeLists. It should be uppercase and not have any spaces
+
+**01PROJCMD** is the name of the executable file
+
+**01PROJDESC** Description of Stuff it does!
+
+## Other things to change before starting
+
+**Usage** change this entire readme based on actual usage and installation
+
+**Contact** Change your contact details as necessary
 
 ## Quick Start
-Linux Install
+Fork and rename
+Find and replace all variables Update the readme and the changelog
+~~Remove the install srcipt~~
+
+### Linux Install
 ```bash
-cmake proj
-./proj --flags
+cmake -B build
+cd build/
+make 01PROJCMD
+./01PROJCMD --flags
 ```
-Basic Usage
-```
-Simple Commands and Usage
-```
+
+### Basic Usage
+| Flag | Values | Description |
+|------|--------|-------------|
+| `--flag-name` |  | Description of useage |
+| `-f=` | `0-99` | Description |
 
 ## Installation
-Describe different targets and different platform specific installation as well as testing and debug installs.
+
+### clang-format
+The GNU Format is used by clang-format. And is automatically run by `make` when using either `build_all` or `clang-format` targets
+
+### docs
+Doxygen is used for Documentation. And is automatically run by `make` when using either `build_all` or `docs` targets.
+
+~~ ### check ~~
+~~ ctest is the CMake tester. It is not implemented yet. And is automatically run by `make` when using either `build_all` or `check` targets. ~~
+
+### proj
+proj is the regular executable. And is automatically run by `make` when using either `build_all` or `prep` targets.
+
+~~ ### debug ~~
+~~ TODO ~~
+
+~~ ### Windows ~~
+~~ TO NOT DO ~~
+
+~~ ### Other Platforms ~~
+~~ TODO ~~
 
 ## Usage
+| Flag | Values | Description |
+|------|--------|-------------|
+| `--flag-name` |  | Description of useage |
+| `-f=` | `0-99` | Description |
+
 Go into detail of all the configuration options as well as syntax of any commands.
 
 ## Contact
@@ -25,7 +74,7 @@ In an emergency, try calling +1 911. *(/s)*
 ## License
 *I love supporting the **[EFF](https://eff.org)**. Please donate to them if this program has been of any help*
 
-Copyright (C) 2026 [tpalmerstudios](mailto:obsoleteTiger@protonmail.com)
+Copyright &copy; 2026 [tpalmerstudios](mailto:obsoleteTiger@protonmail.com)
 
 > ### GNU General Public License Version 3
 
