@@ -1,12 +1,12 @@
 #!/bin/bash
 
-echo "This should be run after the basic `git init` and copy of the files to the proper directory"
+echo "This should be run after the basic $(git init) and copy of the files to the proper directory"
 
 echo "${PWD##*/}"
 
 read -p "Type the project name. Must match the Current Directory: " input_dir
 
-if [[ "$input_dir" != "${PWD##*/}" ]] then
+if [[ "$input_dir" != "${PWD##*/}" ]]; then
 	echo "Wrong Directory! Exiting"
 	exit 1
 fi
@@ -25,4 +25,3 @@ rm -rf docs/
 echo "Ninja Built successfuly"
 echo "make Built successfuly"
 echo "build & docs directories removed"
-
