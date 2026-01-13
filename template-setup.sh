@@ -52,8 +52,8 @@ cp_check ./Doxyfile
 cp_check ./LICENSE
 cp_check ./test.sh
 
-cp ./CHANGELOG-NEW.md ../$proj_command/CHANGELOG.md
-cp ./README-NEW.md ../$proj_command/README.md
+cp ./meta/CHANGELOG-NEW.md ../$proj_command/CHANGELOG.md
+cp ./meta/README-NEW.md ../$proj_command/README.md
 
 cd ../$proj_command
 

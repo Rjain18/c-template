@@ -68,7 +68,7 @@ I leave these because a user could adapt these to have more advanced projects or
 Change the new readme based on actual usage and installation
 
 ## Contact
-<obsoleteTiger@protonmail.com> is the best way to contact me.
+**obsoleteTiger@protonmail.com** is the best way to contact me.
 In an emergency, try calling +1 911. *(/s)*
 
 ## License
@@ -76,9 +76,9 @@ In an emergency, try calling +1 911. *(/s)*
 
 Copyright &copy; 2026 [tpalmerstudios](mailto:obsoleteTiger@protonmail.com)
 
-License GPLv3+: GNU GPL version 3 or later <https://gnu.org/licenses/gpl.html>.
+License GPLv3+: GNU GPL version 3 or later [https://gnu.org/licenses/gpl.html](https://gnu.org/licenses/gpl.html).
 This is free software: you are free to change and redistribute it.
 There is NO WARRANTY, to the extent permitted by law.
 
-Written by <tpalmerstudios>
+Written by **tpalmerstudios**
 
