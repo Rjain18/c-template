@@ -35,6 +35,20 @@ All notable changes to my C Template Generator will be documented here.
 ### Added
 - Add a debug target with debug macros
 
+## [1.3.3] - 2026-01-12
+### Added
+- Fixed README.md and separated child meta files from parent meta files
+- Fixed LICENSE for final time hopefully
+- Added local formatting tooling `shfmt`
+
+## [1.4.0] - 2026-01-15
+### Added
+- Added `--help` flags - Outputs help info
+- Added `--force` flags - Forces using a directory even if it exists
+- Added `--remove` flags - Removes an existing directory before using it
+- Added `--no-git` flags - Skips all git commands
+- Added `--version` flags - Outputs version and license info
+
 ---
 
 ## Planned for [1.3+]
