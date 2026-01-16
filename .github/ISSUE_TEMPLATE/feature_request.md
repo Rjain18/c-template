@@ -8,13 +8,13 @@ assignees: tpalmerstudios
 ---
 
 **Is your feature request relavent to the original purpose of the repository**
-A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
+Describe the problem
 
 **Describe the solution you'd like**
-A clear and concise description of what you want to happen.
+What should happen
 
 **Describe alternatives you've considered**
-A clear and concise description of any alternative solutions or features you've considered. Including forking of this repository
+Alternative solutions. Including forking this repository
 
 **Additional context**
-Add any other context or screenshots about the feature request here.
+... More Context ...
