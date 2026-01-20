@@ -58,6 +58,13 @@ All notable changes to my C Template Generator will be documented here.
 ### Added
 - Added Flags to the C Program (needs work)
 
+## [1.6.0] - 2026-01-19
+### Added
+- Worked on Child Project by adding getopt()
+- Cleaned up CMakeLists
+- Added a message module to handle constant strings
+- Added the ability to install in custom locations
+
 ---
 
 ## Planned for [1.3+]

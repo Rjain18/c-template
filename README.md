@@ -16,6 +16,7 @@ A git repository will init and files with the new names and valued are copied.
 | `--no-git` | skips all setup related to git |
 | `--force` | uses a direcotry even if it already exists. does NOT empty that folder |
 | `--remove` | removes a directory COMPLETELY before creating the template files in that directory |
+| `--path PATH` | takes an existing file path and installs to a subdirectory of that path |
 
 ## Test Install
 `cd ../proj-name` and run `./test-install.sh`
@@ -53,7 +54,7 @@ ninja -C build
 # Runs all targets of cmake through make
 cmake -B build
 cd build
-make build_all 
+make dev_build
 
 # Formats code
 clang-format -i filename.c
