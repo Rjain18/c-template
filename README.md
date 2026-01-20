@@ -23,7 +23,7 @@ A Git repository will init and files with the new names and valued are copied.
 | `--no-git`           | skips all setup related to Git                                                      |
 | `--force`            | uses a direcotry even if it already exists. does NOT empty that folder              |
 | `--remove`           | removes a directory COMPLETELY before creating the template files in that directory |
-| `--path PATH`        | takes an existing file path and installs to a subdirectory of that path             |
+| `--path PATH`        | sets a directory where the project will be installed under                          |
 
 ## Test Install
 

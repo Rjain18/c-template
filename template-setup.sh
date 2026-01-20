@@ -24,7 +24,6 @@ help_output() {
 	echo "    --force			uses a directory even if it already exists. does not empty it first"
 	echo "    --remove			removes a directory COMPLETELY before creating the template files in that directory"
 	echo "    --path [PATH]		sets a directory where the project will be installed under"
-	echo "						NOTE: project will be installed as a subdirectory; the path must exist"
 	echo ""
 	echo "Documentation <https://github.com/tpalmerstudios/c-template>"
 	echo "Questions for the author: <obsoleteTiger@protonmail.com>"
@@ -137,7 +136,7 @@ if [ -d "$install_path/$proj_command" ]; then
 	fi
 fi
 
-mkdir "$install_path/$proj_command"
+mkdir -p "$install_path/$proj_command"
 if [ ! -d "$install_path/$proj_command" ]; then
 	echo "Directory not created. Exiting"
 	exit 1
