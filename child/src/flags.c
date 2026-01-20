@@ -51,9 +51,7 @@ initFlags (int argc, char *argv[])
 					exit (0);
 				}
 			if (strcmp (argv[i], "--flagName") == 0)
-				{
-					globalFlags.flagName = 1;
-				}
+				globalFlags.flagName = 1;
 		}
 }
 
@@ -63,7 +61,8 @@ getFlags (void)
 	return &globalFlags;
 }
 
-int isFlagName (void)
+int
+isFlagName (void)
 {
 	return globalFlags.flagName;
 }

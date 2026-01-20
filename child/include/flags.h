@@ -13,7 +13,7 @@ typedef struct Flags
  * @brief Parses command line arguments into the structure passed to it
  **********************************************/
 void initFlags (int argc, char *argv[]);
-const Flags* getFlags (void);
+const Flags *getFlags (void);
 int isFlagName (void);
 
 void showHelp (void);
