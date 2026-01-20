@@ -38,3 +38,9 @@ jobs:
         env:
           # To report GitHub Actions status checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VALIDATE_C_CLANG_FORMAT: true
+          VALIDATE_SHELL_SHFMT: true
+          
+          VALIDATE_MARKDOWN: false
+          VALIDATE_CPP_CPPLINT: false
+          VALIDATE_CPP_CPPCHECK: false
