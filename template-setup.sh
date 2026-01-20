@@ -147,7 +147,7 @@ if [ "$do_git" = true ]; then
 	git init "$install_path/$proj_command"
 	cp -r ./.github/ "$install_path/$proj_command"
 	cp ./.gitignore "$install_path/$proj_command"
-	echo "$proj_description" >$install_path/$proj_command/.git/description
+	echo "$proj_description" >"$install_path"/"$proj_command"/.git/description
 fi
 
 # child dir copy

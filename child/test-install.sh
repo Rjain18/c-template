@@ -4,7 +4,7 @@ echo "This should be run after the basic $(git init) and copy of the files to th
 
 echo "${PWD##*/}"
 
-read -p "Type the project name. Must match the Current Directory: " input_dir
+read -r -p "Type the project name. Must match the Current Directory: " input_dir
 
 if [[ "$input_dir" != "${PWD##*/}" ]]; then
 	echo "Wrong Directory! Exiting"
