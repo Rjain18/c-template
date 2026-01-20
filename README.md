@@ -1,6 +1,8 @@
 # C-Template
 
-C-Template is a project made to save time in starting a new project. It uses a script to take the name of the project and a brief description and add that into Doxygen as well as creating and running basic CMake setup. The key here is that it sets up a basic program structure and common targets to save time so you can focus on coding.
+C-Template is a project made to save time in starting a new project. It uses a script to take the name of the project and a brief description and add that into Doxygen as well as creating and running basic CMake setup.
+
+Intended to set up a basic program structure and common targets to save time so you can focus on coding.
 
 [![Super-Linter](https://github.com/tpalmerstudios/c-template/actions/workflows/super-linter.yml/badge.svg)](https://github.com/marketplace/actions/super-linter)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
@@ -8,12 +10,15 @@ C-Template is a project made to save time in starting a new project. It uses a s
 
 ## Usage
 
-Run the `./template-setup.sh` script and input a name for the project as well as a description.
+```bash
+./template-setup.sh
+```
+Input a name for the project and a description.
 
 > Some validation occurs, but I'd recommend not naming your project something that has a lot of special characters
 > If you do, use a simplified version of the name that would be suitable in regular files and manually change it in the human readble locations.
 
-That will generate a directory as a sibling to wherever the `c-template` package is.
+That will generate a directory as a sibling to wherever the `c-template` package is or where you select when using the `--path` flag.
 A Git repository will init and files with the new names and valued are copied.
 
 | Flags                | Description                                                                         |
@@ -25,9 +30,30 @@ A Git repository will init and files with the new names and valued are copied.
 | `--remove`           | removes a directory COMPLETELY before creating the template files in that directory |
 | `--path PATH`        | sets a directory where the project will be installed under                          |
 
+## Project Content
+
+The generated project contains several targets and base files to build from.
+1. Documentation (Doxygen)
+2. Formatting and Linting (clang-format, shfmt)
+    - `clang-format` is defined
+    - `super-linter` is added as a GitHub action
+3. Testing (ctest)
+    - Automated with GitHub workflows
+4. Issue Templates
+5. Meta Files
+    - README.md
+    - LICENSE
+    - CHANGELOG.md
+    - CONTRIBUTING.md
+6. Debug (target in CMake)
+7. ~~Automatic Versioning~~
+
 ## Test Install
 
-`cd ../proj-name` and run `./test-install.sh`
+```bash
+cd ../proj-name
+./test-install.sh
+```
 This runs cmake with all targets including documentation.
 
 ## Dependencies
@@ -76,27 +102,17 @@ clang-format -i filename.c
 ## CMake Options
 
 `-DCMAKE_BUILD_TYPE=Debug` for debug builds
+`-DBUILD_TESTS=OFF` to turn off testing
+`-DENABLE_WARNINGS=OFF` to disable compiler warnings
+
+**NOTE**: The bottom two should be turned off for release builds.
+I will be reworking those in CMake to have them set based on target or build type.
 
 ---
 
-## Internal Variables
+## Other things to change before programming
 
-I leave these because a user could adapt these to have more advanced projects or CMake targets that are dfferent than the single project name.
-(Like I did with rabbithole. rabbit was a target, as was hole)
-
-- **01PROJTEMP** Human readable project name
-
-- **01PROJUPPER** is the name of the project used in the CMakeLists. It should be uppercase and not have any spaces
-
-- **01PROJCMD** is the name of the executable file
-
-- **01PROJDESC** Description of Stuff it does!
-
----
-
-## Other things to change before starting
-
-Change the new readme based on actual usage and installation
+Change the meta files based on actual usage and installation
 
 ## Contact
 
