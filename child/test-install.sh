@@ -16,7 +16,7 @@ ninja dev_build -C build || exit 1
 rm -rf build/*
 
 cmake -B build --log-level=ERROR || exit 1
-cd build
+cd build || exit 1
 make -s dev_build || exit 1
 
 cd ..

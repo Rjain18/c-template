@@ -92,7 +92,7 @@ if [ ! -d "$install_path" ]; then
 	exit 1
 fi
 
-read -p "Project Name: " proj_readable
+read -r -p "Project Name: " proj_readable
 
 proj_command=${proj_readable//[^[:alnum:] ]/}
 proj_command=${proj_command//[[:space:]]/_}
@@ -108,7 +108,7 @@ echo "Regular Name:		${proj_readable}"
 echo "Upper Case:		${proj_upper}"
 echo "Directory Name:		${proj_command}"
 echo "Description:		${proj_description}"
-read -p "Confirm Variables make sense (y/N): " confirm
+read -r -p "Confirm Variables make sense (y/N): " confirm
 if [[ "${confirm}" != "y" && "${confirm}" != "Y" ]]; then
 	echo "Nothing Done... Exiting!"
 	exit 1
@@ -116,12 +116,12 @@ fi
 
 if [ "$remove" = true ] && [ -d "$install_path/$proj_command" ]; then
 	echo "Removing the directory: '$install_path/$proj_command'"
-	read -p "Type the name of the directory to confirm. ($proj_command): " confirm_remove
+	read -r -p "Type the name of the directory to confirm. ($proj_command): " confirm_remove
 	if [[ "${proj_command}" != "${confirm_remove}" ]]; then
 		echo "Nothing Done... Exiting!"
 		exit 1
 	else
-		rm -rf "$install_path/$proj_command"
+		rm -rf "${install_path:?}/$proj_command"
 		echo "Removed $install_path/$proj_command"
 	fi
 fi
@@ -158,7 +158,7 @@ else
 	exit 1
 fi
 
-cd "$install_path/$proj_command"
+cd "$install_path/$proj_command" || exit 1
 
 find . -type f -exec sed -i "s|01PROJCMD|$proj_command|g" {} +
 find . -type f -exec sed -i "s|01PROJTEMP|$proj_readable|g" {} +
