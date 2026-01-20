@@ -126,10 +126,10 @@ fi
 # child dir copy
 if cp -r ./child/* "../$proj_command"; then
 	echo "Copied 'child' to ../$proj_command"
-	else
-		echo "Failed to copy 'child'"
-		exit 1
-	fi
+else
+	echo "Failed to copy 'child'"
+	exit 1
+fi
 
 cd "../$proj_command"
 
