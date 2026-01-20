@@ -35,12 +35,17 @@
 *.i*86
 *.x86_64
 *.hex
+
 child/build/
 child/docs/
 child/.cache/
 child/.cache/*
 .cache/
 .cache/*
+node_modules
+package.json
+package-lock.json
+.textlintrc.json
 
 # Debug files
 *.dSYM/
