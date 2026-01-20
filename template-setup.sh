@@ -1,5 +1,48 @@
 #!/bin/bash
 
+complete_output() {
+	echo "Project $proj_command set up successfully!"
+	echo ""
+	echo "Next Steps"
+	if [ "$do_git" = true ]; then
+		echo "Create the repo on Github."
+		echo "Set origin and push."
+	fi
+	echo "Test install in $install_path/$proj_command"
+	echo "Update Readme and any meta files"
+	echo "Start coding"
+	echo ""
+}
+
+version_output() {
+	echo "C-Template is a small tool that generates a ready-to-use C project"
+
+	echo "Version 2.0.0"
+	echo "Please donate to the EFF if this program has been of any help"
+	echo ""
+	echo "Copyright © 2026 tpalmerstudios"
+	echo "License GPLv3+: GNU GPL version 3 or later https://gnu.org/licenses/gpl.html."
+	echo "This is free software: you are free to change and redistribute it."
+	echo "There is NO WARRANTY, to the extent permitted by law."
+	echo ""
+	echo "Written by tpalmerstudios"
+}
+
+help_output() {
+	echo "Usage ./template-setup.sh [OPTION]"
+	echo "Install a stub C Project to a sister directory"
+	echo ""
+	echo "-v, --version			output version information and exit"
+	echo "-h, --help			display this help and exit"
+	echo "    --no-git			skips all setup related to a git repository"
+	echo "    --force			uses a directory even if it already exists. does not empty it first"
+	echo "    --remove			removes a directory COMPLETELY before creating the template files in that directory"
+	echo "    --path [PATH]		sets a directory where the project will be installed under"
+	echo ""
+	echo "Documentation <https://github.com/tpalmerstudios/c-template>"
+	echo "Questions for the author: <obsoleteTiger@protonmail.com>"
+}
+
 force=false
 version=false
 remove=false
@@ -142,46 +185,3 @@ fi
 
 complete_output
 exit 0
-
-complete_output() {
-	echo "Project $proj_command set up successfully!"
-	echo ""
-	echo "Next Steps"
-	if [ "$do_git" = true ]; then
-		echo "Create the repo on Github."
-		echo "Set origin and push."
-	fi
-	echo "Test install in $install_path/$proj_command"
-	echo "Update Readme and any meta files"
-	echo "Start coding"
-	echo ""
-}
-
-version_output() {
-	echo "C-Template is a small tool that generates a ready-to-use C project"
-
-	echo "Version 2.0.0"
-	echo "Please donate to the EFF if this program has been of any help"
-	echo ""
-	echo "Copyright © 2026 tpalmerstudios"
-	echo "License GPLv3+: GNU GPL version 3 or later https://gnu.org/licenses/gpl.html."
-	echo "This is free software: you are free to change and redistribute it."
-	echo "There is NO WARRANTY, to the extent permitted by law."
-	echo ""
-	echo "Written by tpalmerstudios"
-}
-
-help_output() {
-	echo "Usage ./template-setup.sh [OPTION]"
-	echo "Install a stub C Project to a sister directory"
-	echo ""
-	echo "-v, --version			output version information and exit"
-	echo "-h, --help			display this help and exit"
-	echo "    --no-git			skips all setup related to a git repository"
-	echo "    --force			uses a directory even if it already exists. does not empty it first"
-	echo "    --remove			removes a directory COMPLETELY before creating the template files in that directory"
-	echo "    --path [PATH]		sets a directory where the project will be installed under"
-	echo ""
-	echo "Documentation <https://github.com/tpalmerstudios/c-template>"
-	echo "Questions for the author: <obsoleteTiger@protonmail.com>"
-}

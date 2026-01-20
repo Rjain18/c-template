@@ -13,6 +13,7 @@ Intended to set up a basic program structure and common targets to save time so 
 ```bash
 ./template-setup.sh
 ```
+
 Input a name for the project and a description.
 
 > Some validation occurs, but I'd recommend not naming your project something that has a lot of special characters
@@ -33,18 +34,19 @@ A Git repository will init and files with the new names and valued are copied.
 ## Project Content
 
 The generated project contains several targets and base files to build from.
+
 1. Documentation (Doxygen)
 2. Formatting and Linting (clang-format, shfmt)
-    - `clang-format` is defined
-    - `super-linter` is added as a GitHub action
+   - `clang-format` is defined
+   - `super-linter` is added as a GitHub action
 3. Testing (ctest)
-    - Automated with GitHub workflows
+   - Automated with GitHub workflows
 4. Issue Templates
 5. Meta Files
-    - README.md
-    - LICENSE
-    - CHANGELOG.md
-    - CONTRIBUTING.md
+   - README.md
+   - LICENSE
+   - CHANGELOG.md
+   - CONTRIBUTING.md
 6. Debug (target in CMake)
 7. ~~Automatic Versioning~~
 
@@ -54,6 +56,7 @@ The generated project contains several targets and base files to build from.
 cd ../proj-name
 ./test-install.sh
 ```
+
 This runs cmake with all targets including documentation.
 
 ## Dependencies
