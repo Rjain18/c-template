@@ -39,6 +39,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           VALIDATE_CPP: false # Uses Google's Format, not GNU
           VALIDATE_JSCPD: false # Due to some child documents containing parts of the parent
+          VALIDATE_BIOME_LINT: false # warnings of 2 competing linters
+          VALIDATE_BIOME_FORMAT: false # warnings of 2 competing linters
           FIX_YAML_PRETTIER: true
           FIX_MARKDOWN: true
           FIX_SHELL_SHFMT: true
