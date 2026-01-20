@@ -33,6 +33,19 @@ target_link_libraries(01PROJCMD PRIVATE core)
 set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} -g -O0")
 target_compile_definitions(01PROJCMD PRIVATE $<$<CONFIG:Debug>:DEBUG>)
 
+# Set these options off for a Release Build
+option(BUILD_TESTS "Build Tests" ON)
+if (BUILD_TESTS)
+	enable_testing()
+	add_subdirectory(tests)
+endif()
+
+option(ENABLE_WARNINGS "Enable Compiler Warnings" ON)
+if (ENABLE_WARNINGS)
+	target_compile_options(01PROJCMD PRIVATE -Wall -Wextra)
+	target_compile_options(core PRIVATE -Wall -Wextra)
+endif()
+
 # clang-format target
 find_program(CLANG_FORMAT_EXE NAMES clang-format)
 
@@ -61,19 +74,10 @@ else()
 endif()
 add_dependencies(docs 01PROJCMD)
 
-# Set these options off for a Release Build
-option(BUILD_TESTS "Build Tests" ON)
-if (BUILD_TESTS)
-	enable_testing()
-	add_subdirectory(tests)
-endif()
-
-option(ENABLE_WARNINGS "Enable Compiler Warnings" ON)
-if (ENABLE_WARNINGS)
-	target_compile_options(01PROJCMD PRIVATE -Wall -Wextra)
-	target_compile_options(core PRIVATE -Wall -Wextra)
-endif()
-
+add_custom_target(run_tests
+	COMMAND ${CMAKE_CTEST_COMMAND}
+)
+add_dependencies(run_tests flags)
 
 # Runs all targets
 add_custom_target(dev_build
@@ -82,4 +86,5 @@ add_custom_target(dev_build
 add_dependencies(dev_build clang-format)
 add_dependencies(dev_build 01PROJCMD)
 add_dependencies(dev_build docs)
+add_dependencies(dev_build run_tests)
 

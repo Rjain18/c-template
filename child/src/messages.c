@@ -5,13 +5,13 @@ static const char *projectName = "01PROJTEMP";
 static const char *projectDesc = "01PROJDESC";
 static const char *projectCmd = "01PROJCMD";
 
-static const char *helpText = "Usage ./%s [OPTION]\n"
-							  "%s\n\n"
-							  "-v, --version\t\toutput version information and exit\n"
-							  "-h, --help\t\tdisplay this help and exit\n"
-							  "    --flagName\t\trun %s in \"flag\" mode\n\n"
-							  "Documentation <https://github.com/tpalmerstudios/%s>\n"
-							  "Questions for the author: <obsoleteTiger@protonmail.com>\n";
+static const char helpText[] = "Usage ./%s [OPTION]\n"
+							   "%s\n\n"
+							   "-v, --version\t\toutput version information and exit\n"
+							   "-h, --help\t\tdisplay this help and exit\n"
+							   "    --flagName\t\trun %s in \"flag\" mode\n\n"
+							   "Documentation <https://github.com/tpalmerstudios/%s>\n"
+							   "Questions for the author: <obsoleteTiger@protonmail.com>\n";
 
 static const char versionText[]
 	= "%s\n"
