@@ -5,16 +5,10 @@ All notable changes to 01PROJTEMP will be documented here.
 
 ---
 
-## [0.1.0] — YYYY-MM-DD
-
-### Added
+## [0.0.1] — YYYY-MM-DD
 
 - Initial project structure
-- CMake build system
-- Formatting target (`clang-format`)
-- Doxygen support
-- CONTRIBUTING guide
-- README, CHANGELOG, etc.
+- Setup done by tpalmerstudios/c-template
 
 ---
 

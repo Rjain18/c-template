@@ -10,7 +10,7 @@ Thanks for considering contributing to 01PROJTEMP
 
 3. **Coding Style**: Please use the GNU coding style. You can run the formatter with the CMake target (`make clang-format`) to ensure your code matches the style guidelines.
 
-4. **Documentation**: All changes should be documented with Doxygen. Include any parameters, return values, a brief description, and inline logic descriptions when they aren't easily understood. (This means any spots where there's an intentional off by one of prefix `++` that is used as a value. Also any bitwise operations unless they are decribed in the function brief)
+4. **Documentation**: All changes should be documented with Doxygen. Include any parameters, return values, a brief description, and inline logic descriptions when they aren't easily understood. (This means any spots where there's an intentional off-by-one of prefix `++` that is used as a value. Also any bitwise operations unless they are decribed in the function brief)
 
 5. **Testing**: Add testing as possible. Speaking mostly to myself here.
 

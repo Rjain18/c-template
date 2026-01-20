@@ -7,7 +7,7 @@ All notable changes to my C Template Generator will be documented here.
 ## [0.1.0] - 2026-01-10
 
 - Initial project structure
-- CMake build system
+- CMake build tool
 - Formatting target (`clang-format`)
 - Doxygen support
 - CONTRIBUTING guide
@@ -47,12 +47,12 @@ All notable changes to my C Template Generator will be documented here.
 - Added `--help` flags - Outputs help info
 - Added `--force` flags - Forces using a directory even if it exists
 - Added `--remove` flags - Removes an existing directory before using it
-- Added `--no-git` flags - Skips all git commands
+- Added `--no-git` flags - Skips all Git commands
 - Added `--version` flags - Outputs version and license info
 
 ## [1.4.2] - 2026-01-15
 
-- Fixed README format
+- Fixed readme format
 - Organized meta files more effectively
 
 ## [1.5.0] - 2026-01-16
@@ -73,5 +73,5 @@ All notable changes to my C Template Generator will be documented here.
 ### To Do
 
 - Add basic unit tests to the C files
-- Integrate `version.h` into build output and into github possibly
+- Integrate `version.h` into build output and into GitHub possibly
 - Test with meson-buid

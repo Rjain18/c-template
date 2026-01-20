@@ -3,6 +3,7 @@
 C-Template is a project made to save time in starting a new project. It uses a script to take the name of the project and a brief description and add that into Doxygen as well as creating and running basic CMake setup. The key here is that it sets up a basic program structure and common targets to save time so you can focus on coding.
 
 [![Super-Linter](https://github.com/tpalmerstudios/c-template/actions/workflows/super-linter.yml/badge.svg)](https://github.com/marketplace/actions/super-linter)
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
 ## Usage
 
@@ -12,13 +13,13 @@ Run the `./template-setup.sh` script and input a name for the project as well as
 > If you do, use a simplified version of the name that would be suitable in regular files and manually change it in the human readble locations.
 
 That will generate a directory as a sibling to wherever the `c-template` package is.
-A git repository will init and files with the new names and valued are copied.
+A Git repository will init and files with the new names and valued are copied.
 
 | Flags                | Description                                                                         |
 | -------------------- | ----------------------------------------------------------------------------------- |
 | `-v`,`--version`     | output version information and exit                                                 |
 | `-h`,`--help`,`help` | display this help and exit                                                          |
-| `--no-git`           | skips all setup related to git                                                      |
+| `--no-git`           | skips all setup related to Git                                                      |
 | `--force`            | uses a direcotry even if it already exists. does NOT empty that folder              |
 | `--remove`           | removes a directory COMPLETELY before creating the template files in that directory |
 | `--path PATH`        | takes an existing file path and installs to a subdirectory of that path             |
