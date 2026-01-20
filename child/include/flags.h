@@ -16,7 +16,4 @@ void initFlags (int argc, char *argv[]);
 const Flags *getFlags (void);
 int isFlagName (void);
 
-void showHelp (void);
-void showVersion (void);
-
 #endif // FLAGS_H
