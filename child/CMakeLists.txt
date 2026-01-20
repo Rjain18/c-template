@@ -69,10 +69,10 @@ if(DOXYGEN_FOUND)
 		WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
 		COMMENT "Generating Documentation with Doxygen"
 	)
+add_dependencies(docs 01PROJCMD)
 else()
 	message(STATUS "Doxygen not found, 'docs' target will be skipped")
 endif()
-add_dependencies(docs 01PROJCMD)
 
 add_custom_target(run_tests
 	COMMAND ${CMAKE_CTEST_COMMAND}
