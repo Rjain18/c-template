@@ -1,36 +1,43 @@
 # C-Template
-C-Template is a project made to save time in starting a new project. It uses a script to take the name of the project and a brief description and add that into Doxygen as well as creating and running  basic CMake setup. The key here is that it sets up a basic program structure and common targets to save time so you can focus on coding.
+
+C-Template is a project made to save time in starting a new project. It uses a script to take the name of the project and a brief description and add that into Doxygen as well as creating and running basic CMake setup. The key here is that it sets up a basic program structure and common targets to save time so you can focus on coding.
 
 [![Super-Linter](https://github.com/tpalmerstudios/c-template/actions/workflows/super-linter.yml/badge.svg)](https://github.com/marketplace/actions/super-linter)
 
 ## Usage
+
 Run the `./template-setup.sh` script and input a name for the project as well as a description.
+
 > Some validation occurs, but I'd recommend not naming your project something that has a lot of special characters
 > If you do, use a simplified version of the name that would be suitable in regular files and manually change it in the human readble locations.
 
 That will generate a directory as a sibling to wherever the `c-template` package is.
 A git repository will init and files with the new names and valued are copied.
 
-| Flags | Description |
-|---|---|
-| `-v`,`--version`| output version information and exit |
-| `-h`,`--help`,`help` | display this help and exit |
-| `--no-git` | skips all setup related to git |
-| `--force` | uses a direcotry even if it already exists. does NOT empty that folder |
-| `--remove` | removes a directory COMPLETELY before creating the template files in that directory |
-| `--path PATH` | takes an existing file path and installs to a subdirectory of that path |
+| Flags                | Description                                                                         |
+| -------------------- | ----------------------------------------------------------------------------------- |
+| `-v`,`--version`     | output version information and exit                                                 |
+| `-h`,`--help`,`help` | display this help and exit                                                          |
+| `--no-git`           | skips all setup related to git                                                      |
+| `--force`            | uses a direcotry even if it already exists. does NOT empty that folder              |
+| `--remove`           | removes a directory COMPLETELY before creating the template files in that directory |
+| `--path PATH`        | takes an existing file path and installs to a subdirectory of that path             |
 
 ## Test Install
+
 `cd ../proj-name` and run `./test-install.sh`
 This runs cmake with all targets including documentation.
 
 ## Dependencies
+
 ### Required
+
 ```bash
 bash
 ```
 
 ### Optional
+
 ```bash
 CMake
 Doxygen
@@ -42,7 +49,9 @@ ninja
 ```
 
 ## Post Setup
+
 I make the assumption you know how to run all of the dependencies, but here are the most vital
+
 ```bash
 # From the directory of your new project
 
@@ -63,10 +72,13 @@ clang-format -i filename.c
 ```
 
 ## CMake Options
+
 `-DCMAKE_BUILD_TYPE=Debug` for debug builds
 
----------------
+---
+
 ## Internal Variables
+
 I leave these because a user could adapt these to have more advanced projects or CMake targets that are dfferent than the single project name.
 (Like I did with rabbithole. rabbit was a target, as was hole)
 
@@ -78,17 +90,20 @@ I leave these because a user could adapt these to have more advanced projects or
 
 - **01PROJDESC** Description of Stuff it does!
 
----------------
+---
 
 ## Other things to change before starting
+
 Change the new readme based on actual usage and installation
 
 ## Contact
+
 **obsoleteTiger@protonmail.com** is the best way to contact me.
-In an emergency, try calling +1 911. *(/s)*
+In an emergency, try calling +1 911. _(/s)_
 
 ## License
-*I love supporting the **[EFF](https://eff.org)**. Please donate to them if this program has been of any help*
+
+_I love supporting the **[EFF](https://eff.org)**. Please donate to them if this program has been of any help_
 
 Copyright &copy; 2026 [tpalmerstudios](mailto:obsoleteTiger@protonmail.com)
 
@@ -97,4 +112,3 @@ This is free software: you are free to change and redistribute it.
 There is NO WARRANTY, to the extent permitted by law.
 
 Written by **tpalmerstudios**
-

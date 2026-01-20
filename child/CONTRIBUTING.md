@@ -21,4 +21,3 @@ Thanks for considering contributing to 01PROJTEMP
 ## Code of Conduct
 
 Be respectful. No name caling, no flaming. We're all here to learn and grow together.
-

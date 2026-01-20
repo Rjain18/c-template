@@ -4,7 +4,6 @@ about: Plan improvements for the project
 title: "[FEATURE REQUEST]"
 labels: enhancement
 assignees: tpalmerstudios
-
 ---
 
 **Is your feature request relavent to the original purpose of the repository**
