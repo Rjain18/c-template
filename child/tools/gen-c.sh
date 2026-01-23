@@ -69,7 +69,7 @@ module="Module Name"
 if [ ! -f "$PROJECT_ROOT/README.md" ]; then
 	read -r -p "$project: " project
 else
-	project_name="$(awk 'NR==1 {print $1; exit}' "$PROJECT_ROOT/README.md")"
+	project="$(awk 'NR==1 {print $1; exit}' "$PROJECT_ROOT/README.md")"
 fi
 
 read -r -p "$description: " description
