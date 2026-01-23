@@ -4,7 +4,7 @@
 
 ---
 
-### Install
+## Install
 
 ```bash
 cmake -B build
@@ -13,7 +13,7 @@ make 01PROJCMD
 ./01PROJCMD --flags
 ```
 
-### Basic Usage
+## Basic Usage
 
 | Flag        | Values | Description                         |
 | ----------- | ------ | ----------------------------------- |
