@@ -2,6 +2,16 @@
 
 All notable changes to my C Template Generator will be documented here.
 
+## [2.2.0] - 2026-02-03
+
+### Added
+
+- Basic logger module
+
+### Changed
+
+- gen-c script rework
+
 ## [2.1.0] - 2026-01-20
 
 ### Added

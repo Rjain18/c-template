@@ -92,7 +92,7 @@ if [ ! -f "$OUTPUT_FILE" ]; then
 	exit 1
 fi
 sed -i \
-	-e "s/${file_var}/${file_escaped}/g" \
+	-e "s/${file_var}/${file_esc}/g" \
 	-e "s/${brief_var}/${description_esc}/g" \
 	-e "s/${proj_var}/${project_esc}/g" \
 	-e "s/${mod_var}/${module_esc}/g" \
@@ -101,9 +101,9 @@ sed -i \
 	"$OUTPUT_FILE"
 
 if [ "$filetype" = "header" ]; then
-	guard="$(printf '%s\n' "$guard_from" \
-		| tr '[:lower:]' '[:upper:]' \
-		| sed 's#[^A-Z0-9]#_#g')"
+	guard="$(printf '%s\n' "$guard_from" |
+		tr '[:lower:]' '[:upper:]' |
+		sed 's#[^A-Z0-9]#_#g')"
 	sed -i "s/${include}/${guard}/g" "$OUTPUT_FILE"
 fi
 
