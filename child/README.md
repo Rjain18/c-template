@@ -51,7 +51,7 @@ Go into detail of all the configuration options as well as syntax of any command
 
 ## Contact
 
-**obsoleteTiger@protonmail.com** is the best way to contact me.
+**[obsoleteTiger@protonmil.com](mailto:obsoleteTiger@protonmail.com)** is the best way to contact me.
 In an emergency, try calling +1 911. _(/s)_
 
 ## License

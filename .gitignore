@@ -39,9 +39,7 @@
 child/build/
 child/docs/
 child/.cache/
-child/.cache/*
 .cache/
-.cache/*
 node_modules
 package.json
 package-lock.json

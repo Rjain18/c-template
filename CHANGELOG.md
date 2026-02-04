@@ -13,13 +13,11 @@ All notable changes to my C Template Generator will be documented here.
 ### Changed
 
 - Update docs
-
-## [1.10.0] - 2026-01-20
+- Update CMakeLists
 
 ### Added
 
 - Add CMake workflow on GitHub
-- Update CMakeLists
 
 ## [1.9.0] - 2026-01-20
 
@@ -52,7 +50,7 @@ All notable changes to my C Template Generator will be documented here.
 
 - Child has flag parsing
 
-## [1.4.0] - 2026-01-16
+## [1.4.2] - 2026-01-16
 
 ### Changed
 
@@ -61,7 +59,7 @@ All notable changes to my C Template Generator will be documented here.
 - Updated issue template `bug_report.md`
 - Updated issue template `feature_request.md`
 
-## [1.3.0] - 2026-01-11
+## [1.3.3] - 2026-01-11
 
 ### Added
 

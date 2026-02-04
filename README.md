@@ -119,7 +119,7 @@ Change the meta files based on actual usage and installation
 
 ## Contact
 
-**obsoleteTiger@protonmail.com** is the best way to contact me.
+**<obsoleteTiger@protonmail.com>** is the best way to contact me.
 In an emergency, try calling +1 911. _(/s)_
 
 ## License

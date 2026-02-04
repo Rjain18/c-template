@@ -7,7 +7,7 @@ help_output() {
 	echo "Written by tpalmerstudios"
 }
 escape_sed() {
-	printf '%s\n' "$1" | sed 's/[\/&]/\\&/g'
+	printf '%s\n' "$1" | sed 's/[\/&#]/\\&/g'
 }
 
 if [ "$#" -lt 1 ]; then
@@ -63,23 +63,28 @@ mod_var="mod_name"
 date_var="create_date"
 author_var="author_name"
 description="File Description"
-project="Project Name"
+project="01PROJTEMP"
 module="Module Name"
+include="include_guard"
 
 if [ ! -f "$PROJECT_ROOT/README.md" ]; then
 	read -r -p "$project: " project
 else
-	project="$(awk 'NR==1 {print $1; exit}' "$PROJECT_ROOT/README.md")"
+	project="$(sed 's/^#[#[:space:]]*//' "$PROJECT_ROOT/README.md" | head -n 1)"
 fi
 
 read -r -p "$description: " description
 read -r -p "$module: " module
-description="$(escape_sed "$description")"
-project="$(escape_sed "$project")"
-module="$(escape_sed "$module")"
 author="$(git config user.name || echo 'John Doe')"
-author="$(printf '%s\n' "$author" | sed 's/[\/&]/\\&/g')"
 today_date="$(date +%F)"
+
+file_esc="$(escape_sed "$file")"
+description_esc="$(escape_sed "$description")"
+project_esc="$(escape_sed "$project")"
+module_esc="$(escape_sed "$module")"
+author_esc="$(escape_sed "$author")"
+date_esc="$(escape_sed "$today_date")"
+guard_from="${file_esc##*/}"
 
 cp "$TEMPLATE_FILE" "$OUTPUT_FILE"
 if [ ! -f "$OUTPUT_FILE" ]; then
@@ -87,19 +92,19 @@ if [ ! -f "$OUTPUT_FILE" ]; then
 	exit 1
 fi
 sed -i \
-	-e "s/${file_var}/${file}/g" \
-	-e "s/${brief_var}/${description}/g" \
-	-e "s/${proj_var}/${project}/g" \
-	-e "s/${mod_var}/${module}/g" \
-	-e "s/${date_var}/${today_date}/g" \
-	-e "s/${author_var}/${author}/g" \
+	-e "s/${file_var}/${file_escaped}/g" \
+	-e "s/${brief_var}/${description_esc}/g" \
+	-e "s/${proj_var}/${project_esc}/g" \
+	-e "s/${mod_var}/${module_esc}/g" \
+	-e "s/${date_var}/${date_esc}/g" \
+	-e "s/${author_var}/${author_esc}/g" \
 	"$OUTPUT_FILE"
 
 if [ "$filetype" = "header" ]; then
-	guard="$(printf '%s\n' "$file" |
-		tr '[:lower:]' '[:upper:]' |
-		sed 's/\./_/g')"
-	sed -i "s/include_guard/${guard}/g" "$OUTPUT_FILE"
+	guard="$(printf '%s\n' "$guard_from" \
+		| tr '[:lower:]' '[:upper:]' \
+		| sed 's#[^A-Z0-9]#_#g')"
+	sed -i "s/${include}/${guard}/g" "$OUTPUT_FILE"
 fi
 
 if grep -qE '\b(file_name|brief_desc|proj_name|mod_name|create_date|author_name)\b' "$OUTPUT_FILE"; then

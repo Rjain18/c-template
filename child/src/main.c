@@ -1,15 +1,18 @@
-/*************************************
+/**
  * @file main.c
  * @brief Entry point for 01PROJTEMP
- *
- * 01PROJDESC
- * @author tpalmerstudios
- * @maintainer tpalmerstudios
- * @date 2026-01-19
- *
- * ***********************************/
+ */
+
+/*
+ * project: 01PROJTEMP
+ * description: 01PROJDESC
+ * created: 2026-01-19
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ * author: Tim Palmer
+ */
 
 #include "flags.h"
+#include "logger.h"
 #include <assert.h>
 #include <stdio.h>
 #ifdef DEBUG
@@ -26,6 +29,8 @@ main (int argc, char *argv[])
 	DBG ("Main Start");
 #endif
 	initFlags (argc, argv);
+	if (initLog ("log.txt", VERBOSE) != 0)
+		printf ("Log failed!\n");
 	if (isFlagName ())
 		printf ("Example Flag Mode\n");
 
@@ -38,7 +43,9 @@ main (int argc, char *argv[])
 #endif
 			printf ("Hello, World!\n");
 			loop = 0;
+			logMessage (INFO, "loop set to %d", loop);
 		}
+	closeLog ();
 #ifdef DEBUG
 	DBG ("Main End");
 #endif
