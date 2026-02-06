@@ -14,6 +14,5 @@ typedef struct Flags
  **********************************************/
 void initFlags (int argc, char *argv[]);
 const Flags *getFlags (void);
-int isFlagName (void);
 
 #endif // FLAGS_H

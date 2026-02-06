@@ -19,21 +19,12 @@
 #include "debug.h"
 #endif
 
-/************************************
- * @brief Entry Point for 01PROJTEMP
- * **********************************/
-int
-main (int argc, char *argv[])
+void
+runProgram (void)
 {
 #ifdef DEBUG
-	DBG ("Main Start");
+	DBG ("runProgram Start");
 #endif
-	initFlags (argc, argv);
-	if (initLog ("log.txt", VERBOSE) != 0)
-		printf ("Log failed!\n");
-	if (isFlagName ())
-		printf ("Example Flag Mode\n");
-
 	int loop = 1;
 	assert (loop == 1);
 	while (loop)
@@ -46,6 +37,28 @@ main (int argc, char *argv[])
 			logMessage (WARNING, "warning: loop set to %d", loop);
 			logMessage (INFO, "loop set to %d", loop);
 		}
+#ifdef DEBUG
+	DBG ("runProgram End");
+#endif
+}
+
+/************************************
+ * @brief Entry Point for 01PROJTEMP
+ * **********************************/
+int
+main (int argc, char *argv[])
+{
+#ifdef DEBUG
+	DBG ("Main Start");
+#endif
+	if (initLog ("log.txt", VERBOSE) != 0)
+		printf ("Log failed!\n");
+	initFlags (argc, argv);
+	const Flags *flags = getFlags ();
+	if (flags->flagName)
+		printf ("Example Flag Mode\n");
+
+	runProgram ();
 	closeLog ();
 #ifdef DEBUG
 	DBG ("Main End");

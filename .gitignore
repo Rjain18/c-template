@@ -44,6 +44,7 @@ node_modules
 package.json
 package-lock.json
 .textlintrc.json
+config.h
 
 # Debug files
 *.dSYM/

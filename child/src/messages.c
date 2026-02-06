@@ -1,8 +1,8 @@
 #include "messages.h"
+#include "config.h"
 #include <stdio.h>
 
-static const char *projectName = "01PROJTEMP";
-static const char *projectDesc = "01PROJDESC";
+// TODO retrieve the command from an invocation module
 static const char *projectCmd = "01PROJCMD";
 
 static const char helpText[] = "Usage ./%s [OPTION]\n"
@@ -27,17 +27,17 @@ static const char versionText[]
 void
 printHelp (void)
 {
-	printf (helpText, projectCmd, projectDesc, projectName, projectCmd);
+	printf (helpText, projectCmd, PROJ_DESC, PROJ_NAME, projectCmd);
 }
 
 void
 printVersion (void)
 {
-	printf (versionText, projectName, projectDesc, PROJECT_VERSION);
+	printf (versionText, PROJ_NAME, PROJ_DESC, VERSION);
 }
 
 const char *
 getVersion (void)
 {
-	return PROJECT_VERSION;
+	return VERSION;
 }

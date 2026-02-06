@@ -25,7 +25,7 @@
 #define CROSS_COMPILE 0
 #define COMPILER_ID "GNU"
 #define COMPILER_VERSION "15.2.1"
-#define CONFIG_TIMESTAMP "2026-02-05T21:53:11Z"
+#define CONFIG_TIMESTAMP "2026-02-06T19:00:09Z"
 
 #define DEF_TEMPLATE_DIR "templates/"
 
@@ -33,11 +33,12 @@
 #define DEF_LOG_LEVEL VERBOSE
 #define BUILD_TYPE "Debug"
 #define GIT_DIRTY 1
-#define GIT_COMMIT "94407b3"
+#define GIT_COMMIT "b45e324"
 #else
 #define DEF_LOG_LEVEL ERROR
 #define BUILD_TYPE "Release"
 // These should be set for runs on machines without git... TODO
+// We need to move the config to another file I think...
 #define GIT_DIRTY 0
 #define GIT_COMMIT "000000"
 #endif

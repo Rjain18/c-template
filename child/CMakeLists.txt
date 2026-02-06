@@ -14,6 +14,19 @@ execute_process(
 	WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
 	RESULT_VARIABLE GIT_DIRTY
 )
+execute_process(
+	COMMAND git rev-parse --short HEAD
+	WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+	OUTPUT_VARIABLE GIT_COMMIT
+	OUTPUT_STRIP_TRAILING_WHITESPACE
+	RESULT_VARIABLE GIT_FAIL
+)
+
+if(GIT_FAIL EQUAL 0)
+	set(BUILD_LOCAL 1)
+else()
+	set(BUILD_LOCAL 0)
+endif()
 
 if(GIT_DIRTY EQUAL 0)
 	set(GIT_DIRTY_FLAG 0)
@@ -27,18 +40,11 @@ else()
 	set(CROSS_COMPILE 0)
 endif()
 
-execute_process(
-	COMMAND git rev-parse --short HEAD
-	WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
-	OUTPUT_VARIABLE GIT_COMMIT
-	OUTPUT_STRIP_TRAILING_WHITESPACE
-)
-
 string(TIMESTAMP CONFIG_TIMESTAMP "%Y-%m-%dT%H:%M:%SZ" UTC)
 
 configure_file(
 	${CMAKE_SOURCE_DIR}/include/config.h.in
-	${CMAKE_SOURCE_DIR}/include/config.h
+	${CMAKE_BINARY_DIR}/include/config.h
 	@ONLY
 )
 
@@ -57,6 +63,7 @@ list(REMOVE_ITEM 01PROJUPPER_SRC_LIB
 )
 add_library(core ${01PROJUPPER_SRC_LIB})
 target_include_directories(core PUBLIC ${CMAKE_SOURCE_DIR}/include)
+target_include_directories(core PUBLIC ${CMAKE_BINARY_DIR}/include)
 
 # executable
 add_executable(01PROJCMD

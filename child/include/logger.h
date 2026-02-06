@@ -26,13 +26,12 @@ enum logLevel
 /**
  * @brief initializes the log
  * @param file complete filepath to the log
- * @param level messages at or below this number will be logged
+ * @param threshold messages at or below this number will be logged
  */
 int initLog (char *file, int threshold);
 
 /**
  * @brief formats a message to log sink
- *
  */
 void logMessage (int level, const char *message, ...);
 

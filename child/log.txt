@@ -1,0 +1,18 @@
+warning: loop set to 0
+loop set to 0
+closed log file
+warning: loop set to 0
+loop set to 0
+closed log file
+warning: loop set to 0
+loop set to 0
+closed log file
+warning: loop set to 0
+loop set to 0
+closed log file
+warning: loop set to 0
+loop set to 0
+closed log file
+warning: loop set to 0
+loop set to 0
+closed log file

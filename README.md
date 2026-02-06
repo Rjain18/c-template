@@ -113,9 +113,14 @@ I will be reworking those in CMake to have them set based on target or build typ
 
 ---
 
-## Other things to change before programming
+## Internal Variables
 
-Change the meta files based on actual usage and installation
+The following strings are found and replaced throughout the entire child directory.
+**01PROJTEMP**
+**01PROJUPPER**
+**01PROJCMD**
+**01PROJDESC**
+
 
 ## Contact
 

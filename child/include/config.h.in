@@ -38,6 +38,7 @@
 #define DEF_LOG_LEVEL ERROR
 #define BUILD_TYPE "Release"
 // These should be set for runs on machines without git... TODO
+// We need to move the config to another file I think...
 #define GIT_DIRTY 0
 #define GIT_COMMIT "000000"
 #endif

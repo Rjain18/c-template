@@ -16,11 +16,11 @@ make 01PROJCMD
 
 ### Basic Usage
 
-| Flag        | Values | Description                         |
-| ----------- | ------ | ----------------------------------- |
-| `--testing` |        | Run 01PROJTEMP in testing mode      |
-| `-v`        |        | output version information and exit |
-| `-h`        |        | output help information and exit    |
+| Flag         | Values | Description                         |
+| ------------ | ------ | ----------------------------------- |
+| `--flagName` |        | Run 01PROJTEMP in a flags mode      |
+| `-v`         |        | output version information and exit |
+| `-h`         |        | output help information and exit    |
 
 ### ~~Windows~~
 
@@ -34,11 +34,11 @@ make 01PROJCMD
 
 ## Usage
 
-| Other Flags | Values | Description                         |
-| ----------- | ------ | ----------------------------------- |
-| `--testing` |        | Run 01PROJTEMP in testing mode      |
-| `-v`        |        | output version information and exit |
-| `-h`        |        | output help information and exit    |
+| Other Flags  | Values | Description                         |
+| ------------ | ------ | ----------------------------------- |
+| `--flagName` |        | Run 01PROJTEMP in a flags mode      |
+| `-v`         |        | output version information and exit |
+| `-h`         |        | output help information and exit    |
 
 Go into detail of all the configuration options as well as syntax of any commands.
 

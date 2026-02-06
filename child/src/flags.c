@@ -4,12 +4,12 @@
 #include <stdlib.h>
 #include <string.h>
 
-static Flags globalFlags = { 0 };
+static Flags flags = { 0 };
 
 void
 initFlags (int argc, char *argv[])
 {
-	globalFlags.flagName = 0;
+	flags.flagName = 0;
 	int c;
 	enum
 	{
@@ -29,7 +29,7 @@ initFlags (int argc, char *argv[])
 					exit (0);
 					break;
 				case OPT_FLAG_NAME:
-					globalFlags.flagName = 1;
+					flags.flagName = 1;
 					break;
 				case '?':
 				case 'h':
@@ -44,11 +44,5 @@ initFlags (int argc, char *argv[])
 const Flags *
 getFlags (void)
 {
-	return &globalFlags;
-}
-
-int
-isFlagName (void)
-{
-	return globalFlags.flagName;
+	return &flags;
 }
