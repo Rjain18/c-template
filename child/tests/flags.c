@@ -5,7 +5,7 @@ main ()
 {
 	char *args[] = { "./flags", "-flags-", "-h", "-v" };
 	initFlags (3, args);
-	const Flags *flags = getFlags();
+	const Flags *flags = getFlags ();
 	if (flags->flagName)
 		return 1;
 	args[1] = "--flagName";

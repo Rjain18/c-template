@@ -121,7 +121,6 @@ The following strings are found and replaced throughout the entire child directo
 **01PROJCMD**
 **01PROJDESC**
 
-
 ## Contact
 
 **<obsoleteTiger@protonmail.com>** is the best way to contact me.
