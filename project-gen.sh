@@ -43,9 +43,9 @@ help_output() {
 	echo "Questions for the author: <obsoleteTiger@protonmail.com>"
 }
 
-sed_inplace() {
-	sed -i.bak "$@" && rm -f "$1.bak"
-}
+#sed_inplace() {
+#	sed -i.bak "$@" && rm -f "$1.bak"
+#}
 
 force=false
 version=false
