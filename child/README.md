@@ -30,7 +30,8 @@ Add in any other platforms that are supported and example usage
 
 ## Usage
 
-This is where the developer should go in depth on more detailed usage, a fuller flag table and example commands.
+This is where the developer should go in depth on more detailed usage.
+Fuller flag table and example commands.
 Go into detail of all the configuration options as well as syntax of any commands.
 
 ## Dependencies
@@ -42,7 +43,7 @@ Go into detail of all the configuration options as well as syntax of any command
 
 ## Contact
 
-**[obsoleteTiger@protonmail.com](mailto:obsoleteTiger@protonmail.com)** is the best way to contact me.
+**[obsoleteTiger@protonmail.com](mailto:obsoleteTiger@protonmail.com)**
 In an emergency, try calling +1 911. _(/s)_
 
 ## License

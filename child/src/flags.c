@@ -1,15 +1,15 @@
 #include "flags.h"
 #include "messages.h"
 #include <getopt.h>
-#include <stdlib.h>
 #include <string.h>
 
-static Flags flags = { 0 };
+static Flags flags = { 0, 0 };
 
 void
 initFlags (int argc, char *argv[])
 {
 	flags.flagName = 0;
+	flags.printFlags = 0;
 	int c;
 	enum
 	{
@@ -25,18 +25,19 @@ initFlags (int argc, char *argv[])
 			switch (c)
 				{
 				case 'v':
+					flags.printFlags = 1;
 					printVersion ();
-					exit (0);
 					break;
 				case OPT_FLAG_NAME:
 					flags.flagName = 1;
 					break;
-				case '?':
 				case 'h':
-				default:
+					flags.printFlags = 1;
 					printHelp ();
-					exit (0);
 					break;
+				default:
+					flags.printFlags = 1;
+					printBadFlag ();
 				}
 		}
 }

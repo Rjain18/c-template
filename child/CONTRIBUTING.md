@@ -8,7 +8,7 @@ Thanks for considering contributing to 01PROJTEMP
 
 2. **Clone Your Fork**: Clone your fork to your local machine and create a new branch for your changes.
 
-3. **Coding Style**: Please use the GNU coding style. You can run the formatter with the CMake target (`make clang-format`) to ensure your code matches the style guidelines.
+3. **Coding Style**: Please use the GNU coding style. `clang-format -i file.c` should ensure your code matches the style guidelines. In addition this repository uses `shfmt`, `markdownlint`, `textlint`, and `prettier`. Those actions will all be run by the super-linter action and must pass before a PR is accepted.
 
 4. **Documentation**: All changes should be documented with Doxygen. Include any parameters, return values, a brief description, and inline logic descriptions when they aren't easily understood. (This means any spots where there's an intentional off-by-one of prefix `++` that is used as a value. Also any bitwise operations unless they are decribed in the function brief)
 

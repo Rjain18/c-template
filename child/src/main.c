@@ -15,6 +15,7 @@
 #include "logger.h"
 #include <assert.h>
 #include <stdio.h>
+#include <stdlib.h>
 #ifdef DEBUG
 #include "debug.h"
 #endif
@@ -42,6 +43,10 @@ runProgram (void)
 #endif
 }
 
+/*
+ * Add a startup() function he
+ */
+
 /************************************
  * @brief Entry Point for 01PROJTEMP
  * **********************************/
@@ -55,6 +60,8 @@ main (int argc, char *argv[])
 		printf ("Log failed!\n");
 	initFlags (argc, argv);
 	const Flags *flags = getFlags ();
+	if (flags->printFlags)
+		exit (0);
 	if (flags->flagName)
 		printf ("Example Flag Mode\n");
 

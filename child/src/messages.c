@@ -24,6 +24,8 @@ static const char versionText[]
 	  "There is NO WARRANTY, to the extent permitted by law.\n\n"
 	  "Written by tpalmerstudios\n";
 
+static const char badFlag[] = "Improper syntax. Unknown flag.\n\n";
+
 void
 printHelp (void)
 {
@@ -36,8 +38,9 @@ printVersion (void)
 	printf (versionText, PROJ_NAME, PROJ_DESC, VERSION);
 }
 
-const char *
-getVersion (void)
+void
+printBadFlag (void)
 {
-	return VERSION;
+	printf (badFlag);
+	printHelp ();
 }

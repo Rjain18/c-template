@@ -7,6 +7,7 @@
 typedef struct Flags
 {
 	int flagName;
+	int printFlags;
 } Flags;
 
 /***********************************************

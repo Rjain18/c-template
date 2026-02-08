@@ -36,6 +36,7 @@ initLog (char *file, int initThreshold)
 {
 	if (log != NULL)
 		{
+			printf ("Error: Log failed to init\n"); // let's rework this later to go to stderr
 			logMessage (WARNING, "attempted to reinitialize log");
 			return 0;
 		}
