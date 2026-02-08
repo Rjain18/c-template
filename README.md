@@ -17,7 +17,7 @@ Intended to set up a basic program structure and common targets to save time so 
 Input a name for the project and a description.
 
 > Some validation occurs, but I'd recommend not naming your project something that has a lot of special characters
-> If you do, use a simplified version of the name that would be suitable in regular files and manually change it in the human readble locations.
+> If you do, use a simplified version of the name that would be suitable in regular files and manually change it in the human readable locations.
 
 That will generate a directory as a sibling to wherever the `c-template` package is or where you select when using the `--path` flag.
 A Git repository will init and files with the new names and valued are copied.
