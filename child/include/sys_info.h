@@ -14,4 +14,16 @@
 #ifndef SYS_INFO_H
 #define SYS_INFO_H
 
+// Include necessary headers based on the platform
+#if defined(_WIN32) || defined(_WIN64)
+#include <windows.h>
+#else
+#include <sys/utsname.h>
+#endif
+
+/**
+ * @brief gets platform information
+ */
+void get_platform_info ();
+
 #endif // SYS_INFO_H

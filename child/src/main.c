@@ -13,6 +13,7 @@
 
 #include "flags.h"
 #include "logger.h"
+#include "sys_info.h"
 #include <assert.h>
 #include <stdio.h>
 #ifdef DEBUG
