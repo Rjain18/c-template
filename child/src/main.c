@@ -13,6 +13,7 @@
 
 #include "flags.h"
 #include "logger.h"
+#include "sys_info.h"
 #include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -59,6 +60,8 @@ main (int argc, char *argv[])
 	if (initLog ("log.txt", VERBOSE) != 0)
 		printf ("Log failed!\n");
 	initFlags (argc, argv);
+	getDateAndTime ();
+	getPlatformInfo();
 	const Flags *flags = getFlags ();
 	if (flags->printFlags)
 		exit (0);
