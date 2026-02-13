@@ -14,6 +14,8 @@
 #ifndef SYS_INFO_H
 #define SYS_INFO_H
 
+#include <time.h>
+
 // Include necessary headers based on the platform
 #if defined(_WIN32) || defined(_WIN64)
 #include <windows.h>
@@ -24,6 +26,11 @@
 /**
  * @brief gets platform information
  */
-void get_platform_info ();
+void getPlatformInfo ();
+
+/**
+ * @brief gets Date and Time information
+ */
+void getDateAndTime ();
 
 #endif // SYS_INFO_H
