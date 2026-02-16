@@ -62,45 +62,62 @@ remove=false
 do_git=true
 show_help=false
 install_path=".."
-optind=0
-args=("$@")
-argc=$#
 
-while [ $optind -lt $argc ]; do
-	param="${args[$optind]}"
+while getopts ":vhfrnp:-:" opt; do
+	case "$opt" in
+	v) version=true ;;
+	h) show_help=true ;;
+	f) force=true ;;
+	r) remove=true ;;
+	n) do_git=false ;;
+	p) install_path="$OPTARG" ;;
 
-	case "$param" in
-	--version | -v)
-		version=true
-		;;
-	--force)
-		force=true
-		;;
-	--remove)
-		remove=true
-		;;
-	--no-git)
-		do_git=false
-		;;
-	--help | -h | help)
-		show_help=true
-		;;
-	--path)
-		next=$((optind + 1))
-		if [ $next -ge $argc ]; then
-			echo "\"--path some/path\" is the proper syntax"
+	-)
+		case "$OPTARG" in
+		version) version=true ;;
+		help) show_help=true ;;
+		force) force=true ;;
+		remove) remove=true ;;
+		no-git) do_git=false ;;
+		path)
+			# path DIR
+			install_path="${!OPTIND}"
+			OPTIND=$((OPTIND + 1))
+			if [ -z "${install_path:-}" ]; then
+				echo "\"--path some/path\" is the proper syntax"
+				exit 1
+			fi
+			;;
+		path=*)
+			# --path=DIR
+			install_path="${OPTARG#path=}"
+			if [ -z "${install_path:-}" ]; then
+				echo "\"--path some/path\" is the proper syntax"
+				exit 1
+			fi
+			;;
+		*)
+			echo "Unknown Option: --$OPTARG"
 			exit 1
-		fi
-		install_path="${args[$next]}"
-		optind=$((optind + 1))
+			;;
+		esac
 		;;
-	*)
-		echo "Unknown Option: $param"
+	:)
+		echo "Option -$OPTARG requires an argument"
+		exit 1
+		;;
+	\?)
+		echo "Unknown Option: -$OPTARG"
 		exit 1
 		;;
 	esac
-	optind=$((optind + 1))
 done
+
+shift $((OPTIND - 1))
+if [ "$#" -ne 0 ]; then
+	echo "Unexpected arguments: $*"
+	exit 1
+fi
 
 if [ "$version" = true ]; then
 	version_output
