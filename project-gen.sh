@@ -129,6 +129,13 @@ if [ "$show_help" = true ]; then
 	exit 0
 fi
 
+if [ "$do_git" = true ]; then
+	command -v git >/dev/null || {
+		echo "git not found (use --no-git)"
+		exit 1
+	}
+fi
+
 if [ ! -d "$install_path" ]; then
 	echo "Installation Path invalid. Must be an existing directory"
 	echo "Project Will Be installed as a subdirectory with the name you give it"
@@ -140,14 +147,16 @@ read -r -p "Project Name: " proj_readable
 
 proj_command=${proj_readable//[^[:alnum:] ]/}
 proj_command=${proj_command//[[:space:]]/_}
+
+if [ -z "$proj_command" ]; then
+	echo "Project name produced an empty directory name. Use letters/numbers."
+	exit 1
+fi
+
 proj_upper=${proj_command^^}
 target_dir="$install_path/$proj_command"
 
 read -r -p "Project description in 1-2 Sentences: " proj_description
-proj_description=${proj_description//\\/\\\\}
-proj_description=${proj_description//\"/\\\"}
-proj_description=${proj_description//\$/\\\$}
-proj_description=${proj_description//;/\\;}
 
 echo "Regular Name:		${proj_readable}"
 echo "Upper Case:		${proj_upper}"
@@ -195,7 +204,7 @@ if [ "$do_git" = true ]; then
 fi
 
 # child dir copy
-if cp -r ./child/* "$target_dir"; then
+if cp -a ./child/. "$target_dir/"; then
 	echo "Copied 'child' to $target_dir"
 else
 	echo "Failed to copy 'child'"
