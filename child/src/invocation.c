@@ -23,6 +23,7 @@ static void getCurrentDirectory(char* cwd);
  invocation_t* initInvocation(int argc, char *argv[])
  {
     invocation_t *localInvocation = (invocation_t*)malloc(sizeof(invocation_t));
+    char localCwd[MAX_PATH_LEN];
 
     if(localInvocation != NULL)
     {
@@ -33,15 +34,46 @@ static void getCurrentDirectory(char* cwd);
         localInvocation->argv = (char**)malloc((argc+1)* sizeof(char*));
         if (localInvocation->argv != NULL)
         {
-            localInvocation->argv = argv;
+            for(int i = 0; i < argc; i++)
+            {
+                localInvocation->argv[i] = strdup(argv[i]); //Creates a new copy
+                if (!localInvocation->argv[i])
+                {
+                    // If there is any failure to allocate to any of the given input. Free the memory
+                    for (int j = 0; j < i; j++)
+                    {
+                        free(localInvocation->argv[i]);
+                    }
+                    free(localInvocation->argv);
+                    free(localInvocation);
+                    // Log the error
+                    return NULL;
+                }
+            }
+            localInvocation->argv[argc] = NULL; // Argument array must always have a NULL terminated
         }
         else
         {
             //TODO: Log the error
+            free(localInvocation); // Free the space
             return NULL;
         }
 
-        
+        getCurrentDirectory(localCwd);
+        localInvocation->cwd = localCwd;
+
+        if(!localInvocation->cwd)
+        {
+           for (int i = 0; i < argc; i++)
+           {
+                free(localInvocation->argv[i]);
+           }
+            
+           free(localInvocation->argv);
+            free(localInvocation);
+            // Log the error
+            return NULL;
+        }
         
     }
     else
@@ -61,14 +93,17 @@ static void getCurrentDirectory(char* cwd)
     if(_getcwd(buffer, sizeof(buffer)) == NULL)
     {
         //Log the error
+        cwd = NULL;
     }
 #else
     if(getcwd(buffer, sizeof(buffer)) == NULL)
     {
         // Log the error
+        cwd = NULL;
     }
 #endif
-
+    else{
     // Doing safe copy into the argument
-    strlcpy(cwd, buffer, sizeof(cwd));
+    strncpy(cwd, buffer, sizeof(buffer));
+    }
  }
