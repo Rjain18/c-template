@@ -84,7 +84,7 @@ invocation_t* initInvocation(int argc, char *argv[])
     return localInvocation;
 }
 
-void invocation_free(invocation_t *inv)
+void freeInvocation(invocation_t *inv)
 {
     if (!inv)
         return;
@@ -110,7 +110,7 @@ void invocation_free(invocation_t *inv)
     inv->argc = 0;
 }
 
-void invocation_print(const invocation_t *inv)
+void printInvocation(const invocation_t *inv)
 {
     if (!inv) {return;}
 
