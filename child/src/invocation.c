@@ -12,7 +12,7 @@
  */
 
 #include "invocation.h"
-
+#include <stdio.h>
 
 /**
  * @brief Get current directory
@@ -20,8 +20,8 @@
  */
 static void getCurrentDirectory(char* cwd);
 
- invocation_t* initInvocation(int argc, char *argv[])
- {
+invocation_t* initInvocation(int argc, char *argv[])
+{
     invocation_t *localInvocation = (invocation_t*)malloc(sizeof(invocation_t));
     char localCwd[MAX_PATH_LEN];
 
@@ -82,11 +82,48 @@ static void getCurrentDirectory(char* cwd);
         return NULL;
     }
     return localInvocation;
- }
+}
 
+void invocation_free(invocation_t *inv)
+{
+    if (!inv)
+        return;
+
+    // Free the individual memory from the array
+    if (inv->argv)
+    {
+        for (int i = 0; i < inv->argc; i++)
+        {
+            free(inv->argv[i]);
+        }
+        free(inv->argv);
+        inv->argv = NULL;
+    }
+
+    // Free the cwd path
+    if (inv->cwd)
+    {
+        free(inv->cwd);
+        inv->cwd = NULL;
+    }
+
+    inv->argc = 0;
+}
+
+void invocation_print(const invocation_t *inv)
+{
+    if (!inv) {return;}
+
+    printf("CWD  : %s\n", inv->cwd);
+    printf("argc : %d\n", inv->argc);
+    for (int i = 0; i < inv->argc; i++)
+    {
+        printf("argv[%d]: %s\n", i, inv->argv[i]);
+    }
+}
 
 static void getCurrentDirectory(char* cwd)
- {
+{
     char buffer[MAX_PATH_LEN];
 
 #if defined(_WIN32) || defined(_WIN64)
@@ -102,8 +139,9 @@ static void getCurrentDirectory(char* cwd)
         cwd = NULL;
     }
 #endif
-    else{
-    // Doing safe copy into the argument
-    strncpy(cwd, buffer, sizeof(buffer));
+    else
+    {
+        // Doing safe copy into the argument
+        strncpy(cwd, buffer, sizeof(buffer));
     }
- }
+}

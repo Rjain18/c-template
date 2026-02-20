@@ -39,4 +39,16 @@ typedef struct
  */
 invocation_t* initInvocation(int argc, char *argv[]);  
 
+/**
+ * @brief free the dynamic memory for the structure
+ * @param[in] inv pointer to invocation structure 
+ */
+void invocation_free(invocation_t *inv);
+
+/**
+ * @brief print the invocation strucutre
+ * @param[in] inv pointer to invocation structure
+ */
+void invocation_print(const invocation_t *inv);
+
 #endif // INVOCATION_H
