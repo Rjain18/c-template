@@ -13,6 +13,7 @@
 
 #include "invocation.h"
 #include <stdio.h>
+#include "logger.h"
 
 /**
  * @brief Get current directory
@@ -46,7 +47,7 @@ invocation_t* initInvocation(int argc, char *argv[])
                     }
                     free(localInvocation->argv);
                     free(localInvocation);
-                    // Log the error
+                    logMessage (ERROR, "Could not allocate memory for argv[%d]",i);
                     return NULL;
                 }
             }
@@ -54,7 +55,7 @@ invocation_t* initInvocation(int argc, char *argv[])
         }
         else
         {
-            //TODO: Log the error
+            logMessage (ERROR, "Could not allocate memory for argv");
             free(localInvocation); // Free the space
             return NULL;
         }
@@ -69,16 +70,16 @@ invocation_t* initInvocation(int argc, char *argv[])
                 free(localInvocation->argv[i]);
            }
             
-           free(localInvocation->argv);
+            free(localInvocation->argv);
             free(localInvocation);
-            // Log the error
+            logMessage (ERROR, "Could not allocate memory for cwd");
             return NULL;
         }
         
     }
     else
     {
-        //TODO: Log the error 
+        logMessage (ERROR, "Could not allocate memory for invocation structure");
         return NULL;
     }
     return localInvocation;
