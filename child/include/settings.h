@@ -13,4 +13,8 @@
 #ifndef SETTINGS_H
 #define SETTINGS_H
 
+#include "sys_info.h"
+
+#define FILE_PATH "~/.config/"
+
 #endif // SETTINGS_H
