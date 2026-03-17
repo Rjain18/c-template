@@ -19,8 +19,8 @@
 typedef struct
 {
 	char *key;
-	void *value;
-	size_t hash;
+	char *value;
+	unsigned long hash;
 } ctHMEntry_t;
 
 typedef struct
@@ -31,6 +31,39 @@ typedef struct
 } ctHM_t;
 
 ctHM_t *ctHMInit (size_t bucketCount);
-void ctHMFree (ctHM_t *map, void (*freeValue) (void *));
+void ctHMFree (ctHM_t *map);
+size_t ctHMSize (const ctHM_t *map);
+
+int ctHMPut (ctHM_t *map, const char *key, char *value);
+void *ctHMGet (const ctHM_t *map, const char *key);
+
+void ctHMRemove (ctHM_t *map, void (*freeValue) (void *));
+int ctHMContains (const ctHM_t *map, const char *key);
+int ctHMIsEmpty (const ctHM_t *map);
+void ctHMClear (ctHM_t *map);
+
+// Internals
+
+/**
+ * remove
+ * contains
+ * isEmpty
+ * clear
+ *
+ * HELPERS
+ * entryCreate
+ * entryDestroy
+ * keyCompare
+ * findEntry
+ * findEntryPrev
+ * resize
+ * rehash
+ *
+ * keys
+ * values
+ * forEach
+ * print
+ * debugDump
+ */
 
 #endif // HASH_MAP_H
