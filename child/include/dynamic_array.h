@@ -1,5 +1,5 @@
 /**
- * @file da.h
+ * @file dynamic_array.h
  * @brief Basic Data Structures
  */
 

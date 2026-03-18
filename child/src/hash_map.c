@@ -97,12 +97,9 @@ findEntry (const ctHM_t *map, const char *key)
 	ctHMEntry_t *current;
 	for (listIndex = 0; listIndex < bucket->size; listIndex++)
 		{
-			if (ctListGet (bucket, listIndex, &current) == 0)
-				{
-					if (keyEqual (current, key))
-						return current;
-				}
-			// Error Handler
+			current = ctListGet (bucket, listIndex);
+			if (keyEqual (current, key))
+				return current;
 		}
 	return NULL;
 }
@@ -121,10 +118,9 @@ findIndex (const ctHM_t *map, const char *key)
 	ctHMEntry_t *current;
 	for (listIndex = 0; listIndex < bucket->size; listIndex++)
 		{
-			if (ctListGet (bucket, listIndex, &current) == 0)
-				if (keyEqual (current, key))
-					return (int)listIndex;
-			// Error Handler
+			current = ctListGet (bucket, listIndex);
+			if (keyEqual (current, key))
+				return (int)listIndex;
 		}
 	return -1;
 }
@@ -147,7 +143,7 @@ ctHMInit (size_t bucketCount)
 	size_t i;
 	for (i = 0; i < bucketCount; i++)
 		{
-			map->buckets[i] = ctListInit (sizeof (ctHMEntry_t *));
+			map->buckets[i] = ctListInit ();
 			if (map->buckets[i] == NULL)
 				{
 					while (i-- > 0)
@@ -168,7 +164,6 @@ ctHMFree (ctHM_t *map)
 	if (map == NULL)
 		return;
 	size_t i;
-	ctHMEntry_t *entry;
 	if (map->buckets == NULL)
 		{
 			free (map);
@@ -178,14 +173,7 @@ ctHMFree (ctHM_t *map)
 		if (map->buckets[i] != NULL)
 			{
 				while (map->buckets[i]->size != 0)
-					{
-						if (ctListPopBack (map->buckets[i], &entry) != 0)
-							{
-								// Add an error handler here
-								break;
-							}
-						entryDestroy (entry);
-					}
+					entryDestroy (ctListPopBack (map->buckets[i]));
 				ctListFree (map->buckets[i]);
 			}
 	free (map->buckets);
@@ -214,21 +202,13 @@ ctHMClear (ctHM_t *map)
 	if (map == NULL)
 		return;
 	size_t i;
-	ctHMEntry_t *entry;
 	if (map->buckets == NULL)
 		return;
 	for (i = 0; i < map->bucketCount; i++)
 		if (map->buckets[i] != NULL)
 			{
 				while (map->buckets[i]->size != 0)
-					{
-						if (ctListPopBack (map->buckets[i], &entry) != 0)
-							{
-								// Add an error handler here
-								break;
-							}
-						entryDestroy (entry);
-					}
+					entryDestroy (ctListPopBack (map->buckets[i]));
 			}
 	map->size = 0;
 }
@@ -254,20 +234,33 @@ ctHMGet (const ctHM_t *map, const char *key)
 	return entry->value;
 }
 
-/* Not Complete */
 int
 ctHMPut (ctHM_t *map, const char *key, const char *value)
 {
-	if (map == NULL)
+	if (map == NULL || key == NULL || value == NULL)
 		return -1;
-	ctHMEntry_t *entry = entryCreate (key, value);
+
+	ctHMEntry_t *entry = findEntry (map, key);
+	if (entry != NULL)
+		{
+			char *tmp = realloc (entry->value, strlen (value) + 1);
+			if (tmp == NULL)
+				return -1;
+			memcpy (tmp, value, strlen (value) + 1);
+			entry->value = tmp;
+			return 0;
+		}
+	entry = entryCreate (key, value);
 	if (entry == NULL)
 		return -1;
 	size_t i = bucketIndex (map, entry->hash);
 	if (map->buckets[i] == NULL)
 		return -1;
 	if (ctListInsertBack (map->buckets[i], entry) != 0)
-		return -1;
+		{
+			entryDestroy (entry);
+			return -1;
+		}
 	map->size++;
 	return 0;
 }
@@ -284,9 +277,12 @@ ctHMRemove (ctHM_t *map, const char *key)
 	ctHMEntry_t *entry;
 	while (node != NULL)
 		{
-			entry = *node->data;
+			entry = node->data;
 			if (entry == NULL)
-				continue;
+				{
+					node = node->next;
+					continue;
+				}
 			if (keyEqual (entry, key))
 				{
 					if (ctListRemove (list, node) != 0)
@@ -295,7 +291,7 @@ ctHMRemove (ctHM_t *map, const char *key)
 					map->size--;
 					return 1;
 				}
-			node = ctListNext (node);
+			node = node->next;
 		}
 	return 0;
 }

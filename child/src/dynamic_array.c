@@ -1,5 +1,5 @@
 /**
- * @file da.c
+ * @file dynamic_array.c
  * @brief Dynamic Arrays and Stacks
  */
 

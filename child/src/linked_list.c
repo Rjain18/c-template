@@ -1,5 +1,5 @@
 /**
- * @file ll.c
+ * @file linked_list.c
  * @brief Linked List implementation
  */
 

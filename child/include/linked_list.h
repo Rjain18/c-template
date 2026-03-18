@@ -1,5 +1,5 @@
 /**
- * @file ll.h
+ * @file linked_list.h
  * @brief Linked List Module
  */
 
