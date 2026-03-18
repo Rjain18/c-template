@@ -39,7 +39,7 @@ int ctHMContains (const ctHM_t *map, const char *key);
 
 int ctHMPut (ctHM_t *map, const char *key, const char *value);
 char *ctHMGet (const ctHM_t *map, const char *key);
-void ctHMRemove (ctHM_t *map, void (*freeValue) (void *));
+int ctHMRemove (ctHM_t *map, const char *key);
 
 /**
  * TODO

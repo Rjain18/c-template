@@ -272,9 +272,30 @@ ctHMPut (ctHM_t *map, const char *key, const char *value)
 	return 0;
 }
 
-void
-ctHMRemove (ctHM_t *map, void (*freeValue) (void *))
+int
+ctHMRemove (ctHM_t *map, const char *key)
 {
-	if (map == NULL)
-		return;
+	if (map == NULL || key == NULL)
+		return 0;
+	ctLL_t *list = map->buckets[bucketIndex (map, hash (key))];
+	if (list == NULL)
+		return 0;
+	ctLLNode_t *node = list->first;
+	ctHMEntry_t *entry;
+	while (node != NULL)
+		{
+			entry = *node->data;
+			if (entry == NULL)
+				continue;
+			if (keyEqual (entry, key))
+				{
+					if (ctListRemove (list, node) != 0)
+						return 0;
+					entryDestroy (entry);
+					map->size--;
+					return 1;
+				}
+			node = ctListNext (node);
+		}
+	return 0;
 }
